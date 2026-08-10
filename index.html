@@ -47,6 +47,9 @@
     .nav-links { display: flex; gap: 28px; align-items: center; font-size: 14px; font-weight: 650; }
     .nav-links a { text-decoration: none; }
     .nav-links a:hover { color: var(--accent); }
+    .lang-toggle { display: flex; align-items: center; border: 1px solid var(--line); padding: 3px; }
+    .lang-toggle button { min-width: 38px; min-height: 32px; border: 0; color: var(--muted); background: transparent; cursor: pointer; font-size: 12px; font-weight: 800; }
+    .lang-toggle button[aria-pressed="true"] { color: white; background: var(--green); }
     .hero { padding: 100px 0 78px; display: grid; grid-template-columns: 1.45fr .55fr; gap: 64px; align-items: end; }
     .eyebrow { display: flex; gap: 12px; align-items: center; color: var(--green); font-size: 13px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
     .eyebrow::before { content: ""; width: 36px; height: 2px; background: var(--accent); }
@@ -122,7 +125,8 @@
     @media (max-width: 480px) {
       .shell { width: min(calc(100% - 24px), var(--max)); }
       .nav { min-height: 68px; }
-      .nav .button { min-height: 40px; padding: 0 12px; }
+      .nav .button { display: none; }
+      .nav-links { gap: 8px; }
       h1 { font-size: 52px; }
       .hero-copy { font-size: 17px; }
       .cap { padding: 24px; }
@@ -134,61 +138,78 @@
   <header class="shell nav">
     <a class="brand" href="#top" aria-label="Willson home"><span class="mark" aria-hidden="true"></span>WILLSON</a>
     <nav class="nav-links" aria-label="Primary navigation">
-      <a href="#expertise">Expertise</a><a href="#work">Work</a><a class="button primary" href="https://github.com/Willsonbo">GitHub ↗</a>
+      <a href="#expertise" data-i18n="navExpertise">專業能力</a><a href="#work" data-i18n="navWork">作品</a>
+      <div class="lang-toggle" role="group" aria-label="Language"><button type="button" data-lang="zh" aria-pressed="true">中</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
+      <a class="button primary" href="https://github.com/Willsonbo">GitHub ↗</a>
     </nav>
   </header>
 
   <main id="top">
     <div class="shell hero">
       <div>
-        <div class="eyebrow">AI systems · Engineering</div>
-        <h1>From complexity<br>to <em>clarity.</em></h1>
-        <p class="hero-copy">我將 AI、軟體開發與工業工程結合，把複雜的營運問題轉化為可理解、可使用、可持續改善的數位產品。</p>
-        <div class="actions"><a class="button primary" href="#expertise">Explore expertise ↓</a><a class="button" href="https://github.com/Willsonbo">View GitHub ↗</a></div>
+        <div class="eyebrow" data-i18n="eyebrow">AI 系統 · 工程實踐</div>
+        <h1 data-i18n="headline">化繁為簡，<br>創造<em>清晰。</em></h1>
+        <p class="hero-copy" data-i18n="heroCopy">我將 AI、軟體開發與工業工程結合，把複雜的營運問題轉化為可理解、可使用、可持續改善的數位產品。</p>
+        <div class="actions"><a class="button primary" href="#expertise" data-i18n="explore">探索專業能力 ↓</a><a class="button" href="https://github.com/Willsonbo" data-i18n="viewGithub">查看 GitHub ↗</a></div>
       </div>
-      <aside class="hero-side"><div class="status"><span class="pulse"></span>Building practical intelligence</div><p>以系統思考理解現場，以軟體建立工具，以 AI 放大決策品質。</p></aside>
+      <aside class="hero-side"><div class="status"><span class="pulse"></span><span data-i18n="status">打造實用的智慧系統</span></div><p data-i18n="heroSide">以系統思考理解現場，以軟體建立工具，以 AI 放大決策品質。</p></aside>
     </div>
 
     <div class="ticker" aria-hidden="true"><div class="ticker-inner"><span>AI Engineering</span><span>Full-stack Development</span><span>Industrial Engineering</span><span>Process Intelligence</span><span>Human-centered Systems</span><span>AI Engineering</span><span>Full-stack Development</span><span>Industrial Engineering</span><span>Process Intelligence</span><span>Human-centered Systems</span></div></div>
 
     <section id="expertise" class="expertise">
       <div class="shell">
-        <div class="section-head"><div class="kicker">01 / Expertise</div><h2>Three disciplines.<br>One engineering mindset.</h2></div>
+        <div class="section-head"><div class="kicker" data-i18n="expertiseKicker">01 / 專業能力</div><h2 data-i18n="expertiseTitle">三種專業，<br>一套工程思維。</h2></div>
         <div class="cap-grid">
-          <article class="cap"><span class="cap-num">01 — AI</span><h3>Applied AI<br>&amp; intelligent tools</h3><p>設計以實際工作流程為核心的 AI 功能，從知識檢索、資訊萃取到可解釋的決策支援。</p><div class="tags"><span class="tag">LLM APPLICATIONS</span><span class="tag">RAG</span><span class="tag">PROMPT DESIGN</span><span class="tag">EVALUATION</span></div></article>
-          <article class="cap"><span class="cap-num">02 — DEV</span><h3>Product-minded<br>software development</h3><p>將模糊需求拆成清楚架構，打造兼顧使用體驗、可靠性與維護性的前端及全端產品。</p><div class="tags"><span class="tag">REACT</span><span class="tag">JAVASCRIPT</span><span class="tag">APIs</span><span class="tag">GITHUB</span></div></article>
-          <article class="cap"><span class="cap-num">03 — IE</span><h3>Industrial<br>engineering</h3><p>運用流程分析、系統最佳化與數據思維，辨識瓶頸、減少浪費並建立可衡量的改善循環。</p><div class="tags"><span class="tag">PROCESS DESIGN</span><span class="tag">OPTIMIZATION</span><span class="tag">QUALITY</span><span class="tag">OPERATIONS</span></div></article>
+          <article class="cap"><span class="cap-num">01 — AI</span><h3 data-i18n="aiTitle">應用 AI<br>與智慧工具</h3><p data-i18n="aiCopy">設計以實際工作流程為核心的 AI 功能，從知識檢索、資訊萃取到可解釋的決策支援。</p><div class="tags"><span class="tag">LLM APPLICATIONS</span><span class="tag">RAG</span><span class="tag">PROMPT DESIGN</span><span class="tag">EVALUATION</span></div></article>
+          <article class="cap"><span class="cap-num">02 — DEV</span><h3 data-i18n="devTitle">產品導向的<br>軟體開發</h3><p data-i18n="devCopy">將模糊需求拆成清楚架構，打造兼顧使用體驗、可靠性與維護性的前端及全端產品。</p><div class="tags"><span class="tag">REACT</span><span class="tag">JAVASCRIPT</span><span class="tag">APIs</span><span class="tag">GITHUB</span></div></article>
+          <article class="cap"><span class="cap-num">03 — IE</span><h3 data-i18n="ieTitle">工業工程<br>與流程改善</h3><p data-i18n="ieCopy">運用流程分析、系統最佳化與數據思維，辨識瓶頸、減少浪費並建立可衡量的改善循環。</p><div class="tags"><span class="tag">PROCESS DESIGN</span><span class="tag">OPTIMIZATION</span><span class="tag">QUALITY</span><span class="tag">OPERATIONS</span></div></article>
         </div>
       </div>
     </section>
 
     <section class="method">
       <div class="shell">
-        <div class="section-head"><div class="kicker">02 / Method</div><h2>Evidence before automation.</h2></div>
+        <div class="section-head"><div class="kicker" data-i18n="methodKicker">02 / 工作方法</div><h2 data-i18n="methodTitle">先找證據，再談自動化。</h2></div>
         <div class="method-list">
-          <div class="method-row"><strong>Frame the system</strong><span>釐清人、流程、資料與限制條件，先定義真正值得解決的問題。</span></div>
-          <div class="method-row"><strong>Build the smallest proof</strong><span>快速建立可測試原型，以真實情境驗證價值與技術可行性。</span></div>
-          <div class="method-row"><strong>Measure and refine</strong><span>用觀測、回饋與指標持續改善，讓系統隨需求演進而保持可靠。</span></div>
+          <div class="method-row"><strong data-i18n="method1Title">理解整體系統</strong><span data-i18n="method1Copy">釐清人、流程、資料與限制條件，先定義真正值得解決的問題。</span></div>
+          <div class="method-row"><strong data-i18n="method2Title">建立最小驗證</strong><span data-i18n="method2Copy">快速建立可測試原型，以真實情境驗證價值與技術可行性。</span></div>
+          <div class="method-row"><strong data-i18n="method3Title">衡量並持續改善</strong><span data-i18n="method3Copy">用觀測、回饋與指標持續改善，讓系統隨需求演進而保持可靠。</span></div>
         </div>
       </div>
     </section>
 
     <section id="work" class="work">
       <div class="shell">
-        <div class="section-head"><div class="kicker">03 / Selected work</div><h2>Tools that make complex work visible.</h2></div>
+        <div class="section-head"><div class="kicker" data-i18n="workKicker">03 / 精選作品</div><h2 data-i18n="workTitle">讓複雜工作清楚可見的工具。</h2></div>
         <article class="project">
           <div class="project-visual" role="img" aria-label="Animated knowledge graph abstraction"><div class="orbit"></div><div class="visual-label">SYMPTOM → ROOT CAUSE → CHECK</div></div>
-          <div><div class="kicker">Featured project</div><h3>TraceWeave</h3><p>Fab 軟體除錯知識庫：把 log 關鍵字、異常症狀、可能根因與檢查步驟組成可互動的知識圖譜，協助工程師更快建立診斷脈絡。</p><ul><li>Problem <span>Fragmented debugging knowledge</span></li><li>Approach <span>Log triage + knowledge graph</span></li><li>Stack <span>React · Canvas · Vite</span></li></ul><a class="button primary" href="https://github.com/Willsonbo/fab-debug-knowledge-vault">Explore repository ↗</a></div>
+          <div><div class="kicker" data-i18n="featured">焦點專案</div><h3>TraceWeave</h3><p data-i18n="projectCopy">Fab 軟體除錯知識庫：把 log 關鍵字、異常症狀、可能根因與檢查步驟組成可互動的知識圖譜，協助工程師更快建立診斷脈絡。</p><ul><li><b data-i18n="problem">問題</b><span data-i18n="problemValue">零散的除錯知識</span></li><li><b data-i18n="approach">方法</b><span>Log triage + knowledge graph</span></li><li><b>Stack</b><span>React · Canvas · Vite</span></li></ul><a class="button primary" href="https://github.com/Willsonbo/fab-debug-knowledge-vault" data-i18n="exploreRepo">查看程式庫 ↗</a></div>
         </article>
       </div>
     </section>
 
     <section class="contact">
-      <div class="shell contact-box"><div><div class="kicker">04 / Connect</div><h2>Let’s build<br>better systems.</h2></div><div><p class="contact-note">對 AI 應用、軟體產品或流程改善有想法？歡迎透過 GitHub 查看作品並開始交流。</p><a class="button primary" href="https://github.com/Willsonbo">Connect on GitHub ↗</a></div></div>
+      <div class="shell contact-box"><div><div class="kicker" data-i18n="connectKicker">04 / 聯絡</div><h2 data-i18n="connectTitle">一起打造<br>更好的系統。</h2></div><div><p class="contact-note" data-i18n="connectCopy">對 AI 應用、軟體產品或流程改善有想法？歡迎透過 GitHub 查看作品並開始交流。</p><a class="button primary" href="https://github.com/Willsonbo" data-i18n="connectButton">透過 GitHub 聯絡 ↗</a></div></div>
     </section>
   </main>
 
-  <footer class="shell"><span>© <span id="year"></span> Willson. Built with systems thinking.</span><span>AI × SOFTWARE × INDUSTRIAL ENGINEERING</span></footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <footer class="shell"><span>© <span id="year"></span> Willson. <span data-i18n="footer">以系統思維打造。</span></span><span>AI × SOFTWARE × INDUSTRIAL ENGINEERING</span></footer>
+  <script>
+    const messages = {
+      zh: { navExpertise:'專業能力',navWork:'作品',eyebrow:'AI 系統 · 工程實踐',headline:'化繁為簡，<br>創造<em>清晰。</em>',heroCopy:'我將 AI、軟體開發與工業工程結合，把複雜的營運問題轉化為可理解、可使用、可持續改善的數位產品。',explore:'探索專業能力 ↓',viewGithub:'查看 GitHub ↗',status:'打造實用的智慧系統',heroSide:'以系統思考理解現場，以軟體建立工具，以 AI 放大決策品質。',expertiseKicker:'01 / 專業能力',expertiseTitle:'三種專業，<br>一套工程思維。',aiTitle:'應用 AI<br>與智慧工具',aiCopy:'設計以實際工作流程為核心的 AI 功能，從知識檢索、資訊萃取到可解釋的決策支援。',devTitle:'產品導向的<br>軟體開發',devCopy:'將模糊需求拆成清楚架構，打造兼顧使用體驗、可靠性與維護性的前端及全端產品。',ieTitle:'工業工程<br>與流程改善',ieCopy:'運用流程分析、系統最佳化與數據思維，辨識瓶頸、減少浪費並建立可衡量的改善循環。',methodKicker:'02 / 工作方法',methodTitle:'先找證據，再談自動化。',method1Title:'理解整體系統',method1Copy:'釐清人、流程、資料與限制條件，先定義真正值得解決的問題。',method2Title:'建立最小驗證',method2Copy:'快速建立可測試原型，以真實情境驗證價值與技術可行性。',method3Title:'衡量並持續改善',method3Copy:'用觀測、回饋與指標持續改善，讓系統隨需求演進而保持可靠。',workKicker:'03 / 精選作品',workTitle:'讓複雜工作清楚可見的工具。',featured:'焦點專案',projectCopy:'Fab 軟體除錯知識庫：把 log 關鍵字、異常症狀、可能根因與檢查步驟組成可互動的知識圖譜，協助工程師更快建立診斷脈絡。',problem:'問題',problemValue:'零散的除錯知識',approach:'方法',exploreRepo:'查看程式庫 ↗',connectKicker:'04 / 聯絡',connectTitle:'一起打造<br>更好的系統。',connectCopy:'對 AI 應用、軟體產品或流程改善有想法？歡迎透過 GitHub 查看作品並開始交流。',connectButton:'透過 GitHub 聯絡 ↗',footer:'以系統思維打造。'},
+      en: { navExpertise:'Expertise',navWork:'Work',eyebrow:'AI systems · Engineering',headline:'From complexity<br>to <em>clarity.</em>',heroCopy:'I combine AI, software development, and industrial engineering to turn operational complexity into digital products that are clear, useful, and built to improve.',explore:'Explore expertise ↓',viewGithub:'View GitHub ↗',status:'Building practical intelligence',heroSide:'Understand operations through systems thinking, build tools with software, and amplify decision quality with AI.',expertiseKicker:'01 / Expertise',expertiseTitle:'Three disciplines.<br>One engineering mindset.',aiTitle:'Applied AI<br>&amp; intelligent tools',aiCopy:'Designing AI capabilities around real workflows—from knowledge retrieval and information extraction to explainable decision support.',devTitle:'Product-minded<br>software development',devCopy:'Turning ambiguous needs into clear architecture and building frontend and full-stack products for usability, reliability, and maintainability.',ieTitle:'Industrial<br>engineering',ieCopy:'Applying process analysis, systems optimization, and data thinking to reveal bottlenecks, reduce waste, and create measurable improvement loops.',methodKicker:'02 / Method',methodTitle:'Evidence before automation.',method1Title:'Frame the system',method1Copy:'Clarify people, process, data, and constraints before defining the problem truly worth solving.',method2Title:'Build the smallest proof',method2Copy:'Create a testable prototype quickly and validate value and technical feasibility in real contexts.',method3Title:'Measure and refine',method3Copy:'Use observation, feedback, and metrics to improve continuously while keeping the system reliable.',workKicker:'03 / Selected work',workTitle:'Tools that make complex work visible.',featured:'Featured project',projectCopy:'A Fab software debugging knowledge vault that connects log signals, symptoms, probable root causes, and checks in an interactive graph—helping engineers build diagnostic context faster.',problem:'Problem',problemValue:'Fragmented debugging knowledge',approach:'Approach',exploreRepo:'Explore repository ↗',connectKicker:'04 / Connect',connectTitle:'Let’s build<br>better systems.',connectCopy:'Have an idea involving applied AI, software products, or process improvement? Explore my work and start a conversation on GitHub.',connectButton:'Connect on GitHub ↗',footer:'Built with systems thinking.'}
+    };
+    const setLanguage = (lang) => {
+      document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+      document.querySelectorAll('[data-i18n]').forEach((node) => { node.innerHTML = messages[lang][node.dataset.i18n]; });
+      document.querySelectorAll('[data-lang]').forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.lang === lang)));
+      localStorage.setItem('portfolio-language', lang);
+      document.title = lang === 'zh' ? 'Willson — AI × 軟體 × 工業工程' : 'Willson — AI × Software × Industrial Engineering';
+    };
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelectorAll('[data-lang]').forEach((button) => button.addEventListener('click', () => setLanguage(button.dataset.lang)));
+    setLanguage(localStorage.getItem('portfolio-language') || (navigator.language.startsWith('zh') ? 'zh' : 'en'));
+  </script>
 </body>
 </html>
