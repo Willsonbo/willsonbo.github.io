@@ -81,6 +81,14 @@
     .cap p { color: var(--muted); margin: 0 0 26px; font-size: 15px; }
     .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; }
     .tag { padding: 6px 9px; border: 1px solid var(--line); font: 650 11px ui-monospace, SFMono-Regular, Menlo, monospace; background: rgba(255,255,255,.24); }
+    .experience { background: #dedbcf; }
+    .timeline { border-top: 1px solid var(--line); }
+    .timeline-row { display: grid; grid-template-columns: 150px 1fr 1.25fr; gap: 32px; padding: 32px 0; border-bottom: 1px solid var(--line); }
+    .timeline-time { color: var(--accent); font: 700 12px ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .timeline-role strong { display: block; font-size: 22px; letter-spacing: -.035em; }
+    .timeline-role span { color: var(--muted); font-size: 13px; }
+    .timeline-row p { margin: 0; color: var(--muted); font-size: 14px; }
+    .metric { color: var(--ink); font-weight: 800; }
     .method { color: var(--paper); background: var(--green); }
     .method .section-head { align-items: end; }
     .method .kicker { color: #ff9a80; }
@@ -102,6 +110,11 @@
     .project ul { padding: 0; margin: 28px 0; list-style: none; border-top: 1px solid var(--line); }
     .project li { display: flex; justify-content: space-between; gap: 20px; padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
     .project li span { color: var(--muted); text-align: right; }
+    .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+    .project-card { min-height: 310px; padding: 28px; border: 1px solid var(--line); display: flex; flex-direction: column; background: rgba(255,255,255,.24); }
+    .project-card h3 { margin: 40px 0 14px; font-size: 28px; line-height: 1.05; letter-spacing: -.04em; }
+    .project-card p { margin: 0 0 24px; color: var(--muted); font-size: 14px; }
+    .project-card .tags { margin-top: auto; }
     .contact { padding: 120px 0 70px; }
     .contact-box { border-top: 1px solid var(--line); padding-top: 55px; display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: end; }
     .contact h2 { font-size: clamp(52px, 8vw, 108px); }
@@ -114,11 +127,14 @@
       .hero-side { border-left: 0; border-top: 1px solid var(--line); padding: 24px 0 0; }
       .section-head, .contact-box, .project { grid-template-columns: 1fr; }
       .cap-grid { grid-template-columns: 1fr; }
+      .timeline-row { grid-template-columns: 110px 1fr; }
+      .timeline-row p { grid-column: 2; }
       .cap { min-height: 290px; }
       .cap h3 { margin-top: 45px; }
       .method-row { grid-template-columns: 45px 1fr; }
       .method-row span { grid-column: 2; }
       .project { padding: 22px; gap: 34px; }
+      .project-grid { grid-template-columns: 1fr; }
       .project-visual { min-height: 320px; }
       section { padding: 80px 0; }
     }
@@ -130,6 +146,8 @@
       h1 { font-size: 52px; }
       .hero-copy { font-size: 17px; }
       .cap { padding: 24px; }
+      .timeline-row { grid-template-columns: 1fr; gap: 8px; }
+      .timeline-row p { grid-column: 1; }
       footer { align-items: flex-start; flex-direction: column; }
     }
   </style>
@@ -138,7 +156,7 @@
   <header class="shell nav">
     <a class="brand" href="#top" aria-label="Willson home"><span class="mark" aria-hidden="true"></span>WILLSON</a>
     <nav class="nav-links" aria-label="Primary navigation">
-      <a href="#expertise" data-i18n="navExpertise">專業能力</a><a href="#work" data-i18n="navWork">作品</a>
+      <a href="#expertise" data-i18n="navExpertise">專業能力</a><a href="#experience" data-i18n="navExperience">經歷</a><a href="#work" data-i18n="navWork">作品</a>
       <div class="lang-toggle" role="group" aria-label="Language"><button type="button" data-lang="zh" aria-pressed="true">中</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
       <a class="button primary" href="https://github.com/Willsonbo">GitHub ↗</a>
     </nav>
@@ -168,9 +186,21 @@
       </div>
     </section>
 
+    <section id="experience" class="experience">
+      <div class="shell">
+        <div class="section-head"><div class="kicker" data-i18n="experienceKicker">02 / 經歷</div><h2 data-i18n="experienceTitle">能力來自真實場景的驗證。</h2></div>
+        <div class="timeline">
+          <article class="timeline-row"><div class="timeline-time">2025 — NOW</div><div class="timeline-role"><strong>Astra Zenith</strong><span data-i18n="astraRole">技術負責人 · Technical Lead</span></div><p data-i18n="astraCopy">負責 Romi 與 Cumie 兩條產品線，從客戶洞察到全端、行動端與 <span class="metric">4 家 AI 供應商</span>的統一服務層。</p></article>
+          <article class="timeline-row"><div class="timeline-time">2024 — 2025</div><div class="timeline-role"><strong>ASML</strong><span data-i18n="asmlRole">SS&amp;P PLM / BP&amp;S 軟體自動化實習生</span></div><p data-i18n="asmlCopy">整合 Python、Oracle ERP、Power Apps 與 VBA，消除每月 <span class="metric">100+ 小時</span>人工流程並降低 <span class="metric">80%</span> 供應商手動輸入。</p></article>
+          <article class="timeline-row"><div class="timeline-time">2023 — 2024</div><div class="timeline-role"><strong data-i18n="mackay">馬偕紀念醫院</strong><span data-i18n="mackayRole">全端／軟體工程師</span></div><p data-i18n="mackayCopy">以 Flutter 與 Cloudflare 從零建立連結醫師、教練與病人的健身處方平台，將臨床限制轉成產品護欄。</p></article>
+          <article class="timeline-row"><div class="timeline-time">2021 — 2025</div><div class="timeline-role"><strong>NCKU</strong><span data-i18n="nckuRole">工業與資訊管理學士</span></div><p data-i18n="nckuCopy">結合供應鏈、作業研究與資訊系統訓練；以 <span class="metric">5 種模型 × 5 種特徵選擇法</span>完成企業韌性 ML 研究。</p></article>
+        </div>
+      </div>
+    </section>
+
     <section class="method">
       <div class="shell">
-        <div class="section-head"><div class="kicker" data-i18n="methodKicker">02 / 工作方法</div><h2 data-i18n="methodTitle">先找證據，再談自動化。</h2></div>
+        <div class="section-head"><div class="kicker" data-i18n="methodKicker">03 / 工作方法</div><h2 data-i18n="methodTitle">先找證據，再談自動化。</h2></div>
         <div class="method-list">
           <div class="method-row"><strong data-i18n="method1Title">理解整體系統</strong><span data-i18n="method1Copy">釐清人、流程、資料與限制條件，先定義真正值得解決的問題。</span></div>
           <div class="method-row"><strong data-i18n="method2Title">建立最小驗證</strong><span data-i18n="method2Copy">快速建立可測試原型，以真實情境驗證價值與技術可行性。</span></div>
@@ -181,24 +211,29 @@
 
     <section id="work" class="work">
       <div class="shell">
-        <div class="section-head"><div class="kicker" data-i18n="workKicker">03 / 精選作品</div><h2 data-i18n="workTitle">讓複雜工作清楚可見的工具。</h2></div>
+        <div class="section-head"><div class="kicker" data-i18n="workKicker">04 / 精選作品</div><h2 data-i18n="workTitle">讓複雜工作清楚可見的工具。</h2></div>
         <article class="project">
           <div class="project-visual" role="img" aria-label="Animated knowledge graph abstraction"><div class="orbit"></div><div class="visual-label">SYMPTOM → ROOT CAUSE → CHECK</div></div>
           <div><div class="kicker" data-i18n="featured">焦點專案</div><h3>TraceWeave</h3><p data-i18n="projectCopy">Fab 軟體除錯知識庫：把 log 關鍵字、異常症狀、可能根因與檢查步驟組成可互動的知識圖譜，協助工程師更快建立診斷脈絡。</p><ul><li><b data-i18n="problem">問題</b><span data-i18n="problemValue">零散的除錯知識</span></li><li><b data-i18n="approach">方法</b><span>Log triage + knowledge graph</span></li><li><b>Stack</b><span>React · Canvas · Vite</span></li></ul><a class="button primary" href="https://github.com/Willsonbo/fab-debug-knowledge-vault" data-i18n="exploreRepo">查看程式庫 ↗</a></div>
         </article>
+        <div class="project-grid">
+          <article class="project-card"><span class="cap-num">APPLIED AI</span><h3>Cumie</h3><p data-i18n="cumieCopy">0→1 AI 溝通助手，以統一服務層整合 OpenAI、Gemini、Claude 與 Grok，搭配非同步任務、配額與生成紀錄。</p><div class="tags"><span class="tag">DRF</span><span class="tag">REACT NATIVE</span><span class="tag">CELERY</span><span class="tag">LLM</span></div></article>
+          <article class="project-card"><span class="cap-num">ML RESEARCH</span><h3 data-i18n="resilienceTitle">企業韌性 ML</h3><p data-i18n="resilienceCopy">以 26 項財務指標、五種模型與五種特徵選擇法評估企業韌性，CART + RFE 達 70%+ 交叉驗證準確率。</p><div class="tags"><span class="tag">CART</span><span class="tag">RFE</span><span class="tag">K-MEANS</span><span class="tag">XAI</span></div></article>
+          <article class="project-card"><span class="cap-num">SYSTEMS</span><h3>Linux Kernel lab0</h3><p data-i18n="kernelCopy">以 C 與 Linux kernel list.h 實作佇列函式庫，涵蓋環狀鏈結串列、container_of、反轉與 merge sort。</p><div class="tags"><span class="tag">C</span><span class="tag">LINUX</span><span class="tag">DATA STRUCTURES</span></div></article>
+        </div>
       </div>
     </section>
 
     <section class="contact">
-      <div class="shell contact-box"><div><div class="kicker" data-i18n="connectKicker">04 / 聯絡</div><h2 data-i18n="connectTitle">一起打造<br>更好的系統。</h2></div><div><p class="contact-note" data-i18n="connectCopy">對 AI 應用、軟體產品或流程改善有想法？歡迎透過 GitHub 查看作品並開始交流。</p><a class="button primary" href="https://github.com/Willsonbo" data-i18n="connectButton">透過 GitHub 聯絡 ↗</a></div></div>
+      <div class="shell contact-box"><div><div class="kicker" data-i18n="connectKicker">05 / 聯絡</div><h2 data-i18n="connectTitle">一起打造<br>更好的系統。</h2></div><div><p class="contact-note" data-i18n="connectCopy">對 AI 應用、軟體產品或流程改善有想法？歡迎透過 GitHub 查看作品並開始交流。</p><a class="button primary" href="https://github.com/Willsonbo" data-i18n="connectButton">透過 GitHub 聯絡 ↗</a></div></div>
     </section>
   </main>
 
   <footer class="shell"><span>© <span id="year"></span> Willson. <span data-i18n="footer">以系統思維打造。</span></span><span>AI × SOFTWARE × INDUSTRIAL ENGINEERING</span></footer>
   <script>
     const messages = {
-      zh: { navExpertise:'專業能力',navWork:'作品',eyebrow:'AI 系統 · 工程實踐',headline:'化繁為簡，<br>創造<em>清晰。</em>',heroCopy:'我將 AI、軟體開發與工業工程結合，把複雜的營運問題轉化為可理解、可使用、可持續改善的數位產品。',explore:'探索專業能力 ↓',viewGithub:'查看 GitHub ↗',status:'打造實用的智慧系統',heroSide:'以系統思考理解現場，以軟體建立工具，以 AI 放大決策品質。',expertiseKicker:'01 / 專業能力',expertiseTitle:'三種專業，<br>一套工程思維。',aiTitle:'應用 AI<br>與智慧工具',aiCopy:'設計以實際工作流程為核心的 AI 功能，從知識檢索、資訊萃取到可解釋的決策支援。',devTitle:'產品導向的<br>軟體開發',devCopy:'將模糊需求拆成清楚架構，打造兼顧使用體驗、可靠性與維護性的前端及全端產品。',ieTitle:'工業工程<br>與流程改善',ieCopy:'運用流程分析、系統最佳化與數據思維，辨識瓶頸、減少浪費並建立可衡量的改善循環。',methodKicker:'02 / 工作方法',methodTitle:'先找證據，再談自動化。',method1Title:'理解整體系統',method1Copy:'釐清人、流程、資料與限制條件，先定義真正值得解決的問題。',method2Title:'建立最小驗證',method2Copy:'快速建立可測試原型，以真實情境驗證價值與技術可行性。',method3Title:'衡量並持續改善',method3Copy:'用觀測、回饋與指標持續改善，讓系統隨需求演進而保持可靠。',workKicker:'03 / 精選作品',workTitle:'讓複雜工作清楚可見的工具。',featured:'焦點專案',projectCopy:'Fab 軟體除錯知識庫：把 log 關鍵字、異常症狀、可能根因與檢查步驟組成可互動的知識圖譜，協助工程師更快建立診斷脈絡。',problem:'問題',problemValue:'零散的除錯知識',approach:'方法',exploreRepo:'查看程式庫 ↗',connectKicker:'04 / 聯絡',connectTitle:'一起打造<br>更好的系統。',connectCopy:'對 AI 應用、軟體產品或流程改善有想法？歡迎透過 GitHub 查看作品並開始交流。',connectButton:'透過 GitHub 聯絡 ↗',footer:'以系統思維打造。'},
-      en: { navExpertise:'Expertise',navWork:'Work',eyebrow:'AI systems · Engineering',headline:'From complexity<br>to <em>clarity.</em>',heroCopy:'I combine AI, software development, and industrial engineering to turn operational complexity into digital products that are clear, useful, and built to improve.',explore:'Explore expertise ↓',viewGithub:'View GitHub ↗',status:'Building practical intelligence',heroSide:'Understand operations through systems thinking, build tools with software, and amplify decision quality with AI.',expertiseKicker:'01 / Expertise',expertiseTitle:'Three disciplines.<br>One engineering mindset.',aiTitle:'Applied AI<br>&amp; intelligent tools',aiCopy:'Designing AI capabilities around real workflows—from knowledge retrieval and information extraction to explainable decision support.',devTitle:'Product-minded<br>software development',devCopy:'Turning ambiguous needs into clear architecture and building frontend and full-stack products for usability, reliability, and maintainability.',ieTitle:'Industrial<br>engineering',ieCopy:'Applying process analysis, systems optimization, and data thinking to reveal bottlenecks, reduce waste, and create measurable improvement loops.',methodKicker:'02 / Method',methodTitle:'Evidence before automation.',method1Title:'Frame the system',method1Copy:'Clarify people, process, data, and constraints before defining the problem truly worth solving.',method2Title:'Build the smallest proof',method2Copy:'Create a testable prototype quickly and validate value and technical feasibility in real contexts.',method3Title:'Measure and refine',method3Copy:'Use observation, feedback, and metrics to improve continuously while keeping the system reliable.',workKicker:'03 / Selected work',workTitle:'Tools that make complex work visible.',featured:'Featured project',projectCopy:'A Fab software debugging knowledge vault that connects log signals, symptoms, probable root causes, and checks in an interactive graph—helping engineers build diagnostic context faster.',problem:'Problem',problemValue:'Fragmented debugging knowledge',approach:'Approach',exploreRepo:'Explore repository ↗',connectKicker:'04 / Connect',connectTitle:'Let’s build<br>better systems.',connectCopy:'Have an idea involving applied AI, software products, or process improvement? Explore my work and start a conversation on GitHub.',connectButton:'Connect on GitHub ↗',footer:'Built with systems thinking.'}
+      zh: { navExpertise:'專業能力',navExperience:'經歷',navWork:'作品',eyebrow:'AI 系統 · 工程實踐',headline:'化繁為簡，<br>創造<em>清晰。</em>',heroCopy:'我將 AI、軟體開發與工業工程結合，把複雜的營運問題轉化為可理解、可使用、可持續改善的數位產品。',explore:'探索專業能力 ↓',viewGithub:'查看 GitHub ↗',status:'打造實用的智慧系統',heroSide:'以系統思考理解現場，以軟體建立工具，以 AI 放大決策品質。',expertiseKicker:'01 / 專業能力',expertiseTitle:'三種專業，<br>一套工程思維。',aiTitle:'應用 AI<br>與智慧工具',aiCopy:'設計以實際工作流程為核心的 AI 功能，從知識檢索、資訊萃取到可解釋的決策支援。',devTitle:'產品導向的<br>軟體開發',devCopy:'將模糊需求拆成清楚架構，打造兼顧使用體驗、可靠性與維護性的前端及全端產品。',ieTitle:'工業工程<br>與流程改善',ieCopy:'運用流程分析、系統最佳化與數據思維，辨識瓶頸、減少浪費並建立可衡量的改善循環。',experienceKicker:'02 / 經歷',experienceTitle:'能力來自真實場景的驗證。',astraRole:'技術負責人 · Technical Lead',astraCopy:'負責 Romi 與 Cumie 兩條產品線，從客戶洞察到全端、行動端與 <span class="metric">4 家 AI 供應商</span>的統一服務層。',asmlRole:'SS&amp;P PLM / BP&amp;S 軟體自動化實習生',asmlCopy:'整合 Python、Oracle ERP、Power Apps 與 VBA，消除每月 <span class="metric">100+ 小時</span>人工流程並降低 <span class="metric">80%</span> 供應商手動輸入。',mackay:'馬偕紀念醫院',mackayRole:'全端／軟體工程師',mackayCopy:'以 Flutter 與 Cloudflare 從零建立連結醫師、教練與病人的健身處方平台，將臨床限制轉成產品護欄。',nckuRole:'工業與資訊管理學士',nckuCopy:'結合供應鏈、作業研究與資訊系統訓練；以 <span class="metric">5 種模型 × 5 種特徵選擇法</span>完成企業韌性 ML 研究。',methodKicker:'03 / 工作方法',methodTitle:'先找證據，再談自動化。',method1Title:'理解整體系統',method1Copy:'釐清人、流程、資料與限制條件，先定義真正值得解決的問題。',method2Title:'建立最小驗證',method2Copy:'快速建立可測試原型，以真實情境驗證價值與技術可行性。',method3Title:'衡量並持續改善',method3Copy:'用觀測、回饋與指標持續改善，讓系統隨需求演進而保持可靠。',workKicker:'04 / 精選作品',workTitle:'讓複雜工作清楚可見的工具。',featured:'焦點專案',projectCopy:'Fab 軟體除錯知識庫：把 log 關鍵字、異常症狀、可能根因與檢查步驟組成可互動的知識圖譜，協助工程師更快建立診斷脈絡。',problem:'問題',problemValue:'零散的除錯知識',approach:'方法',exploreRepo:'查看程式庫 ↗',cumieCopy:'0→1 AI 溝通助手，以統一服務層整合 OpenAI、Gemini、Claude 與 Grok，搭配非同步任務、配額與生成紀錄。',resilienceTitle:'企業韌性 ML',resilienceCopy:'以 26 項財務指標、五種模型與五種特徵選擇法評估企業韌性，CART + RFE 達 70%+ 交叉驗證準確率。',kernelCopy:'以 C 與 Linux kernel list.h 實作佇列函式庫，涵蓋環狀鏈結串列、container_of、反轉與 merge sort。',connectKicker:'05 / 聯絡',connectTitle:'一起打造<br>更好的系統。',connectCopy:'對 AI 應用、軟體產品或流程改善有想法？歡迎透過 GitHub 查看作品並開始交流。',connectButton:'透過 GitHub 聯絡 ↗',footer:'以系統思維打造。'},
+      en: { navExpertise:'Expertise',navExperience:'Experience',navWork:'Work',eyebrow:'AI systems · Engineering',headline:'From complexity<br>to <em>clarity.</em>',heroCopy:'I combine AI, software development, and industrial engineering to turn operational complexity into digital products that are clear, useful, and built to improve.',explore:'Explore expertise ↓',viewGithub:'View GitHub ↗',status:'Building practical intelligence',heroSide:'Understand operations through systems thinking, build tools with software, and amplify decision quality with AI.',expertiseKicker:'01 / Expertise',expertiseTitle:'Three disciplines.<br>One engineering mindset.',aiTitle:'Applied AI<br>&amp; intelligent tools',aiCopy:'Designing AI capabilities around real workflows—from knowledge retrieval and information extraction to explainable decision support.',devTitle:'Product-minded<br>software development',devCopy:'Turning ambiguous needs into clear architecture and building frontend and full-stack products for usability, reliability, and maintainability.',ieTitle:'Industrial<br>engineering',ieCopy:'Applying process analysis, systems optimization, and data thinking to reveal bottlenecks, reduce waste, and create measurable improvement loops.',experienceKicker:'02 / Experience',experienceTitle:'Capabilities proven in real environments.',astraRole:'Technical Lead',astraCopy:'Leading the Romi and Cumie product lines—from customer insight to full-stack, mobile, and a unified service layer across <span class="metric">four AI providers</span>.',asmlRole:'SS&amp;P PLM / BP&amp;S Software Automation Intern',asmlCopy:'Combined Python, Oracle ERP, Power Apps, and VBA to eliminate <span class="metric">100+ hours per month</span> of manual work and reduce supplier input by <span class="metric">80%</span>.',mackay:'Mackay Memorial Hospital',mackayRole:'Full-stack / Software Engineer',mackayCopy:'Built a Flutter and Cloudflare exercise-prescription platform connecting doctors, coaches, and patients, translating clinical constraints into product safeguards.',nckuRole:'B.B.A. Industrial &amp; Information Management',nckuCopy:'Combined supply chain, operations research, and information systems; completed enterprise-resilience research using <span class="metric">5 models × 5 feature-selection methods</span>.',methodKicker:'03 / Method',methodTitle:'Evidence before automation.',method1Title:'Frame the system',method1Copy:'Clarify people, process, data, and constraints before defining the problem truly worth solving.',method2Title:'Build the smallest proof',method2Copy:'Create a testable prototype quickly and validate value and technical feasibility in real contexts.',method3Title:'Measure and refine',method3Copy:'Use observation, feedback, and metrics to improve continuously while keeping the system reliable.',workKicker:'04 / Selected work',workTitle:'Tools that make complex work visible.',featured:'Featured project',projectCopy:'A Fab software debugging knowledge vault that connects log signals, symptoms, probable root causes, and checks in an interactive graph—helping engineers build diagnostic context faster.',problem:'Problem',problemValue:'Fragmented debugging knowledge',approach:'Approach',exploreRepo:'Explore repository ↗',cumieCopy:'A 0→1 AI communication assistant with a unified service layer for OpenAI, Gemini, Claude, and Grok—plus asynchronous jobs, quotas, and generation logging.',resilienceTitle:'Enterprise Resilience ML',resilienceCopy:'Evaluated enterprise resilience across 26 financial indicators, five models, and five feature-selection methods; CART + RFE reached 70%+ cross-validation accuracy.',kernelCopy:'Implemented a queue library in C with Linux kernel list.h, covering circular linked lists, container_of, reversals, and merge sort.',connectKicker:'05 / Connect',connectTitle:'Let’s build<br>better systems.',connectCopy:'Have an idea involving applied AI, software products, or process improvement? Explore my work and start a conversation on GitHub.',connectButton:'Connect on GitHub ↗',footer:'Built with systems thinking.'}
     };
     const setLanguage = (lang) => {
       document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
