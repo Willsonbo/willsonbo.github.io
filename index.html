@@ -106,6 +106,10 @@
     .work { background: var(--paper-2); }
     .project { display: grid; grid-template-columns: 1fr 1.3fr; gap: 60px; align-items: center; border: 1px solid var(--line); padding: 48px; }
     .project-visual { min-height: 420px; background: var(--ink); position: relative; overflow: hidden; display: grid; place-items: center; }
+    .project-visual-link { color: inherit; text-decoration: none; }
+    .project-visual-link .project-visual { transition: transform .25s ease, box-shadow .25s ease; }
+    .project-visual-link:hover .project-visual { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(23,33,27,.16); }
+    .visual-cta { position: absolute; top: 22px; right: 22px; padding: 9px 12px; color: var(--ink); background: var(--paper); font-size: 12px; font-weight: 800; }
     .orbit { width: 210px; aspect-ratio: 1; border: 1px solid rgba(255,255,255,.23); border-radius: 50%; position: relative; animation: rotate 16s linear infinite; }
     .orbit::before, .orbit::after { content: ""; position: absolute; border-radius: 50%; background: var(--accent); width: 18px; height: 18px; top: 16px; left: 22px; box-shadow: 145px 118px 0 #68b995, 38px 172px 0 #f4d36d; }
     .orbit::after { inset: 46px; width: auto; height: auto; border: 1px solid rgba(255,255,255,.23); background: transparent; box-shadow: none; }
@@ -116,6 +120,7 @@
     .project ul { padding: 0; margin: 28px 0; list-style: none; border-top: 1px solid var(--line); }
     .project li { display: flex; justify-content: space-between; gap: 20px; padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
     .project li span { color: var(--muted); text-align: right; }
+    .project-actions { display: flex; flex-wrap: wrap; gap: 10px; }
     .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
     .project-card { min-height: 310px; padding: 28px; border: 1px solid var(--line); display: flex; flex-direction: column; background: rgba(255,255,255,.24); }
     .project-card h3 { margin: 40px 0 14px; font-size: 28px; line-height: 1.05; letter-spacing: -.04em; }
@@ -222,8 +227,8 @@
       <div class="shell">
         <div class="section-head"><div class="kicker" data-i18n="workKicker">04 / 作品</div><h2 data-i18n="workTitle">幾個我真的做過、<br>也講得清楚的專案。</h2></div>
         <article class="project">
-          <div class="project-visual" role="img" aria-label="Animated knowledge graph abstraction"><div class="orbit"></div><div class="visual-label">SYMPTOM → ROOT CAUSE → CHECK</div></div>
-          <div><div class="kicker" data-i18n="featured">最近做的專案</div><h3>TraceWeave</h3><p data-i18n="projectCopy">工程師查 log 時，線索常散在不同文件和人的經驗裡。TraceWeave 會把錯誤訊息、症狀、可能根因和檢查步驟串成一張圖，讓排查有路徑可循。</p><ul><li><b data-i18n="problem">要解的問題</b><span data-i18n="problemValue">除錯知識散落各處</span></li><li><b data-i18n="approach">我的做法</b><span>Log triage + knowledge graph</span></li><li><b>Stack</b><span>React · Canvas · Vite</span></li></ul><a class="button primary" href="https://github.com/Willsonbo/fab-debug-knowledge-vault" data-i18n="exploreRepo">到 GitHub 看程式碼 ↗</a></div>
+          <a class="project-visual-link" href="https://willsonbo.github.io/fab-debug-knowledge-vault/" aria-label="Open the interactive TraceWeave demo"><div class="project-visual" role="img" aria-label="Animated knowledge graph abstraction"><span class="visual-cta" data-i18n="openDemo">直接操作 Demo ↗</span><div class="orbit"></div><div class="visual-label">SYMPTOM → ROOT CAUSE → CHECK</div></div></a>
+          <div><div class="kicker" data-i18n="featured">最近做的專案</div><h3>TraceWeave</h3><p data-i18n="projectCopy">工程師查 log 時，線索常散在不同文件和人的經驗裡。TraceWeave 會把錯誤訊息、症狀、可能根因和檢查步驟串成一張圖，讓排查有路徑可循。</p><ul><li><b data-i18n="problem">要解的問題</b><span data-i18n="problemValue">除錯知識散落各處</span></li><li><b data-i18n="approach">我的做法</b><span>Log triage + knowledge graph</span></li><li><b>Stack</b><span>React · Canvas · Vite</span></li></ul><div class="project-actions"><a class="button primary" href="https://willsonbo.github.io/fab-debug-knowledge-vault/" data-i18n="openDemo">直接操作 Demo ↗</a><a class="button" href="https://github.com/Willsonbo/fab-debug-knowledge-vault" data-i18n="exploreRepo">到 GitHub 看程式碼 ↗</a></div></div>
         </article>
         <div class="project-grid">
           <article class="project-card"><span class="cap-num">APPLIED AI</span><h3>Cumie</h3><p data-i18n="cumieCopy">我從零做了一個 AI 溝通助手。後端用同一層服務串起 OpenAI、Gemini、Claude 和 Grok，也把配額、背景任務與每次生成紀錄一起處理。</p><div class="tags"><span class="tag">DRF</span><span class="tag">REACT NATIVE</span><span class="tag">CELERY</span><span class="tag">LLM</span></div></article>
@@ -288,6 +293,8 @@
       connectCopy: '不論是設備軟體怎麼排查、現有流程怎麼改善，或團隊每天重複做的事能不能自動化，我都很有興趣。',
       connectButton: '到 GitHub 找我 ↗'
     });
+    Object.assign(messages.zh, { openDemo: '直接操作 Demo ↗' });
+    Object.assign(messages.en, { openDemo: 'Open live demo ↗' });
     const setLanguage = (lang) => {
       document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
       document.querySelectorAll('[data-i18n]').forEach((node) => { node.innerHTML = messages[lang][node.dataset.i18n]; });
