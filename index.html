@@ -117,9 +117,14 @@
     @keyframes rotate { to { transform: rotate(360deg); } }
     .project h3 { margin: 14px 0 20px; font-size: clamp(36px, 5vw, 62px); letter-spacing: -.06em; line-height: .95; }
     .project p { color: var(--muted); font-size: 17px; max-width: 590px; }
+    .project-flow { margin: 24px 0; padding: 18px; border: 1px solid var(--line); background: rgba(255,255,255,.24); }
+    .project-flow strong { display: block; margin-bottom: 12px; color: var(--accent); font-size: 11px; letter-spacing: .08em; }
+    .project-flow ol { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 0; padding: 0; list-style: none; counter-reset: flow; }
+    .project-flow li { counter-increment: flow; display: grid; grid-template-columns: 24px 1fr; gap: 7px; color: var(--muted); font-size: 12px; line-height: 1.45; }
+    .project-flow li::before { content: "0" counter(flow); color: var(--ink); font: 750 10px ui-monospace, SFMono-Regular, Menlo, monospace; padding-top: 2px; }
     .project ul { padding: 0; margin: 28px 0; list-style: none; border-top: 1px solid var(--line); }
-    .project li { display: flex; justify-content: space-between; gap: 20px; padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
-    .project li span { color: var(--muted); text-align: right; }
+    .project > div > ul > li { display: flex; justify-content: space-between; gap: 20px; padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+    .project > div > ul > li span { color: var(--muted); text-align: right; }
     .project-actions { display: flex; flex-wrap: wrap; gap: 10px; }
     .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
     .project-card { min-height: 310px; padding: 28px; border: 1px solid var(--line); display: flex; flex-direction: column; background: rgba(255,255,255,.24); }
@@ -148,6 +153,7 @@
       .method-row span { grid-column: 2; }
       .project { padding: 22px; gap: 34px; }
       .project-grid { grid-template-columns: 1fr; }
+      .project-flow ol { grid-template-columns: 1fr; }
       .project-visual { min-height: 320px; }
       section { padding: 80px 0; }
     }
@@ -228,7 +234,7 @@
         <div class="section-head"><div class="kicker" data-i18n="workKicker">04 / 作品</div><h2 data-i18n="workTitle">幾個我真的做過、<br>也講得清楚的專案。</h2></div>
         <article class="project">
           <a class="project-visual-link" href="https://willsonbo.github.io/fab-debug-knowledge-vault/" aria-label="Open the interactive TraceWeave demo"><div class="project-visual" role="img" aria-label="Animated knowledge graph abstraction"><span class="visual-cta" data-i18n="openDemo">直接操作 Demo ↗</span><div class="orbit"></div><div class="visual-label">SYMPTOM → ROOT CAUSE → CHECK</div></div></a>
-          <div><div class="kicker" data-i18n="featured">最近做的專案</div><h3>TraceWeave</h3><p data-i18n="projectCopy">工程師查 log 時，線索常散在不同文件和人的經驗裡。TraceWeave 會把錯誤訊息、症狀、可能根因和檢查步驟串成一張圖，讓排查有路徑可循。</p><ul><li><b data-i18n="problem">要解的問題</b><span data-i18n="problemValue">除錯知識散落各處</span></li><li><b data-i18n="approach">我的做法</b><span>Log triage + knowledge graph</span></li><li><b>Stack</b><span>React · Canvas · Vite</span></li></ul><div class="project-actions"><a class="button primary" href="https://willsonbo.github.io/fab-debug-knowledge-vault/" data-i18n="openDemo">直接操作 Demo ↗</a><a class="button" href="https://github.com/Willsonbo/fab-debug-knowledge-vault" data-i18n="exploreRepo">到 GitHub 看程式碼 ↗</a></div></div>
+          <div><div class="kicker" data-i18n="featured">最近做的專案</div><h3>TraceWeave</h3><p data-i18n="projectCopy">工程師查 log 時，線索常散在不同文件和人的經驗裡。TraceWeave 會把錯誤訊息、症狀、可能根因和檢查步驟串成一張圖，讓排查有路徑可循。</p><div class="project-flow"><strong data-i18n="guideLabel">三步驟開始排查</strong><ol><li data-i18n="guide1">貼入 log，或直接使用頁面範例</li><li data-i18n="guide2">點選被標出的可疑訊號</li><li data-i18n="guide3">沿候選根因查看檢查步驟</li></ol></div><ul><li><b data-i18n="problem">要解的問題</b><span data-i18n="problemValue">除錯知識散落各處</span></li><li><b data-i18n="approach">我的做法</b><span>Log triage + knowledge graph</span></li><li><b>Stack</b><span>React · Canvas · Vite</span></li></ul><div class="project-actions"><a class="button primary" href="https://willsonbo.github.io/fab-debug-knowledge-vault/" data-i18n="openDemo">直接操作 Demo ↗</a><a class="button" href="https://github.com/Willsonbo/fab-debug-knowledge-vault" data-i18n="exploreRepo">到 GitHub 看程式碼 ↗</a></div></div>
         </article>
         <div class="project-grid">
           <article class="project-card"><span class="cap-num">APPLIED AI</span><h3>Cumie</h3><p data-i18n="cumieCopy">我從零做了一個 AI 溝通助手。後端用同一層服務串起 OpenAI、Gemini、Claude 和 Grok，也把配額、背景任務與每次生成紀錄一起處理。</p><div class="tags"><span class="tag">DRF</span><span class="tag">REACT NATIVE</span><span class="tag">CELERY</span><span class="tag">LLM</span></div></article>
@@ -295,6 +301,8 @@
     });
     Object.assign(messages.zh, { openDemo: '直接操作 Demo ↗' });
     Object.assign(messages.en, { openDemo: 'Open live demo ↗' });
+    Object.assign(messages.zh, { guideLabel: '三步驟開始排查', guide1: '貼入 log，或直接使用頁面範例', guide2: '點選被標出的可疑訊號', guide3: '沿候選根因查看檢查步驟' });
+    Object.assign(messages.en, { guideLabel: 'Start troubleshooting in three steps', guide1: 'Paste a log or use the sample', guide2: 'Select a highlighted signal', guide3: 'Follow root causes to the next check' });
     const setLanguage = (lang) => {
       document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
       document.querySelectorAll('[data-i18n]').forEach((node) => { node.innerHTML = messages[lang][node.dataset.i18n]; });
