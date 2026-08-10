@@ -1,87 +1,194 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 40px;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        h2 {
-            color: #333;
-        }
-        p, li {
-            color: #555;
-        }
-        ul {
-            margin-left: 20px;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Willson — AI systems, software development, and industrial engineering.">
+  <meta property="og:title" content="Willson — AI × Software × Industrial Engineering">
+  <meta property="og:description" content="Building intelligent systems that turn operational complexity into clear, useful products.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://willsonbo.github.io/">
+  <meta property="og:image" content="https://willsonbo.github.io/assets/og.png">
+  <meta property="og:image:width" content="1731">
+  <meta property="og:image:height" content="909">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://willsonbo.github.io/assets/og.png">
+  <title>Willson — AI × Software × Industrial Engineering</title>
+  <style>
+    :root {
+      --ink: #17211b;
+      --muted: #69736c;
+      --paper: #f2f0e8;
+      --paper-2: #e9e6dc;
+      --accent: #ff5c35;
+      --green: #1e5a43;
+      --line: rgba(23,33,27,.16);
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    .shell { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      min-height: 82px; border-bottom: 1px solid var(--line);
+    }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; letter-spacing: -.03em; }
+    .mark { width: 12px; height: 12px; background: var(--accent); border-radius: 50%; box-shadow: 17px 0 0 var(--green); margin-right: 17px; }
+    .nav-links { display: flex; gap: 28px; align-items: center; font-size: 14px; font-weight: 650; }
+    .nav-links a { text-decoration: none; }
+    .nav-links a:hover { color: var(--accent); }
+    .hero { padding: 100px 0 78px; display: grid; grid-template-columns: 1.45fr .55fr; gap: 64px; align-items: end; }
+    .eyebrow { display: flex; gap: 12px; align-items: center; color: var(--green); font-size: 13px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 36px; height: 2px; background: var(--accent); }
+    h1 { margin: 24px 0 32px; font-size: clamp(56px, 8.8vw, 126px); line-height: .87; letter-spacing: -.075em; max-width: 960px; }
+    h1 em { color: var(--accent); font-style: normal; }
+    .hero-copy { max-width: 680px; font-size: clamp(18px, 2vw, 24px); color: #445049; letter-spacing: -.02em; }
+    .hero-side { border-left: 1px solid var(--line); padding-left: 28px; }
+    .status { display: flex; align-items: center; gap: 9px; margin-bottom: 24px; font-size: 13px; font-weight: 700; }
+    .pulse { width: 9px; height: 9px; border-radius: 50%; background: #3caa73; box-shadow: 0 0 0 6px rgba(60,170,115,.12); }
+    .hero-side p { margin: 0; color: var(--muted); font-size: 14px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 20px; border: 1px solid var(--ink); text-decoration: none; font-weight: 750; font-size: 14px; transition: .2s ease; }
+    .button.primary { color: white; background: var(--ink); }
+    .button:hover { background: var(--accent); border-color: var(--accent); color: white; transform: translateY(-2px); }
+    .ticker { overflow: hidden; background: var(--ink); color: var(--paper); }
+    .ticker-inner { display: flex; width: max-content; padding: 16px 0; animation: drift 24s linear infinite; font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .ticker span { display: flex; align-items: center; }
+    .ticker span::after { content: "✦"; color: var(--accent); padding: 0 30px; }
+    @keyframes drift { to { transform: translateX(-50%); } }
+    section { padding: 110px 0; }
+    .section-head { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; margin-bottom: 54px; }
+    .kicker { color: var(--accent); font-size: 12px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+    h2 { margin: 0; font-size: clamp(36px, 5vw, 68px); line-height: .98; letter-spacing: -.055em; max-width: 820px; }
+    .expertise { border-top: 1px solid var(--line); }
+    .cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+    .cap { min-height: 350px; padding: 32px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); display: flex; flex-direction: column; }
+    .cap-num { color: var(--accent); font: 700 12px ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .cap h3 { margin: 68px 0 16px; font-size: 28px; line-height: 1.05; letter-spacing: -.04em; }
+    .cap p { color: var(--muted); margin: 0 0 26px; font-size: 15px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; }
+    .tag { padding: 6px 9px; border: 1px solid var(--line); font: 650 11px ui-monospace, SFMono-Regular, Menlo, monospace; background: rgba(255,255,255,.24); }
+    .method { color: var(--paper); background: var(--green); }
+    .method .section-head { align-items: end; }
+    .method .kicker { color: #ff9a80; }
+    .method-list { counter-reset: steps; border-top: 1px solid rgba(255,255,255,.22); }
+    .method-row { counter-increment: steps; display: grid; grid-template-columns: 80px 1fr 1.2fr; gap: 24px; padding: 28px 0; border-bottom: 1px solid rgba(255,255,255,.22); align-items: center; }
+    .method-row::before { content: "0" counter(steps); color: #ff9a80; font: 700 12px ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .method-row strong { font-size: 23px; letter-spacing: -.03em; }
+    .method-row span { color: rgba(242,240,232,.68); font-size: 14px; }
+    .work { background: var(--paper-2); }
+    .project { display: grid; grid-template-columns: 1fr 1.3fr; gap: 60px; align-items: center; border: 1px solid var(--line); padding: 48px; }
+    .project-visual { min-height: 420px; background: var(--ink); position: relative; overflow: hidden; display: grid; place-items: center; }
+    .orbit { width: 210px; aspect-ratio: 1; border: 1px solid rgba(255,255,255,.23); border-radius: 50%; position: relative; animation: rotate 16s linear infinite; }
+    .orbit::before, .orbit::after { content: ""; position: absolute; border-radius: 50%; background: var(--accent); width: 18px; height: 18px; top: 16px; left: 22px; box-shadow: 145px 118px 0 #68b995, 38px 172px 0 #f4d36d; }
+    .orbit::after { inset: 46px; width: auto; height: auto; border: 1px solid rgba(255,255,255,.23); background: transparent; box-shadow: none; }
+    .visual-label { position: absolute; inset: auto 24px 22px; color: rgba(255,255,255,.62); font: 600 11px ui-monospace, SFMono-Regular, Menlo, monospace; }
+    @keyframes rotate { to { transform: rotate(360deg); } }
+    .project h3 { margin: 14px 0 20px; font-size: clamp(36px, 5vw, 62px); letter-spacing: -.06em; line-height: .95; }
+    .project p { color: var(--muted); font-size: 17px; max-width: 590px; }
+    .project ul { padding: 0; margin: 28px 0; list-style: none; border-top: 1px solid var(--line); }
+    .project li { display: flex; justify-content: space-between; gap: 20px; padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+    .project li span { color: var(--muted); text-align: right; }
+    .contact { padding: 120px 0 70px; }
+    .contact-box { border-top: 1px solid var(--line); padding-top: 55px; display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: end; }
+    .contact h2 { font-size: clamp(52px, 8vw, 108px); }
+    .contact-note { color: var(--muted); max-width: 390px; }
+    footer { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 28px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+    @media (max-width: 820px) {
+      .nav-links a:not(.button) { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 72px 0 60px; }
+      .hero-side { border-left: 0; border-top: 1px solid var(--line); padding: 24px 0 0; }
+      .section-head, .contact-box, .project { grid-template-columns: 1fr; }
+      .cap-grid { grid-template-columns: 1fr; }
+      .cap { min-height: 290px; }
+      .cap h3 { margin-top: 45px; }
+      .method-row { grid-template-columns: 45px 1fr; }
+      .method-row span { grid-column: 2; }
+      .project { padding: 22px; gap: 34px; }
+      .project-visual { min-height: 320px; }
+      section { padding: 80px 0; }
+    }
+    @media (max-width: 480px) {
+      .shell { width: min(calc(100% - 24px), var(--max)); }
+      .nav { min-height: 68px; }
+      .nav .button { min-height: 40px; padding: 0 12px; }
+      h1 { font-size: 52px; }
+      .hero-copy { font-size: 17px; }
+      .cap { padding: 24px; }
+      footer { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
 </head>
 <body>
-    <h2>Privacy Policy</h2>
-    <p>This Privacy Policy applies to the Exercise Beyond Med app (hereafter referred to as "Application") for mobile devices, developed by Gravity Health Co., Ltd (hereafter referred to as "Service Provider") as a Freemium service. This service is provided "AS IS".</p>
-    
-    <h2>Information Collection and Use</h2>
-    <p>When you download and use the Application, it may collect certain information, including:</p>
-    <ul>
-        <li>Your device's Internet Protocol (IP) address.</li>
-        <li>The pages you visit within the Application, the time and date of your visit, and the duration of your interactions.</li>
-        <li>The operating system used on your mobile device.</li>
-        <li>Aggregated and anonymized location data to improve user experience and offer relevant features.</li>
-    </ul>
-    <p>The Application <strong>does not collect or store precise real-time GPS location data</strong> but may determine an approximate location using network-based methods such as Wi-Fi or cellular data.</p>
-    
-    <h2>Third-Party Access</h2>
-    <p>The Service Provider may share anonymized and aggregated data with third parties in accordance with this Privacy Policy. Specifically:</p>
-    <ul>
-        <li>The Application utilizes third-party services, which have their own Privacy Policies regarding data collection and use:
-            <ul>
-                <li><a href="https://www.google.com/policies/privacy/">Google Play Services</a></li>
-                <li><a href="https://firebase.google.com/support/privacy">Google Analytics for Firebase</a></li>
-                <li><a href="https://firebase.google.com/support/privacy">Firebase Crashlytics</a></li>
-            </ul>
-        </li>
-        <li>The Service Provider may disclose collected information:
-            <ul>
-                <li>To comply with legal requirements, such as a subpoena or governmental request.</li>
-                <li>When necessary to protect rights, prevent fraud, or ensure user and public safety.</li>
-                <li>With trusted service providers who process data on behalf of the Service Provider under strict confidentiality agreements.</li>
-            </ul>
-        </li>
-    </ul>
-    
-    <h2>Opt-Out Rights</h2>
-    <p>Users may stop all data collection by uninstalling the Application using the standard uninstall procedure provided by their device or application marketplace.</p>
-    
-    <h2>Data Retention Policy</h2>
-    <p>The Service Provider will retain user-provided data for as long as the user actively uses the Application and for a defined retention period of <strong>up to 12 months</strong> after account inactivity. Users will receive a notification before their data is scheduled for deletion, allowing them the opportunity to retain or request the removal of their information.</p>
-    <p>Upon request, users can have their personally identifiable data deleted by contacting <strong>contact@stronggravityhealth.com</strong>. The Service Provider will process such requests within <strong>30 days</strong>.</p>
-    
-    <h2>Children's Privacy</h2>
-    <p>The Application is not intended for children under the age of 13, and the Service Provider does not knowingly collect personal data from children. If a parent or guardian becomes aware that a child under 13 has provided personal information, they should contact <strong>contact@stronggravityhealth.com</strong> to request data deletion. The Service Provider commits to verifying and deleting such data within <strong>14 days</strong>.</p>
-    
-    <h2>Security Measures</h2>
-    <p>The Service Provider takes reasonable security measures to protect collected data, including:</p>
-    <ul>
-        <li>Encryption of sensitive data during transmission.</li>
-        <li>Secure storage with access restrictions.</li>
-        <li>Regular security audits and compliance checks.</li>
-    </ul>
-    
-    <h2>Changes and Notifications</h2>
-    <p>This Privacy Policy may be updated periodically. The Service Provider will notify users of significant changes via <strong>email notifications and in-app alerts</strong>. Continued use of the Application after a Privacy Policy update constitutes acceptance of the revised terms.</p>
-    
-    <h2>Your Consent</h2>
-    <p>By using the Application, you consent to the collection, use, and processing of your data as outlined in this Privacy Policy.</p>
-    
-    <h2>Contact Us</h2>
-    <p>If you have any questions or concerns regarding this Privacy Policy, please contact <strong>contact@stronggravityhealth.com</strong>.</p>
+  <header class="shell nav">
+    <a class="brand" href="#top" aria-label="Willson home"><span class="mark" aria-hidden="true"></span>WILLSON</a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="#expertise">Expertise</a><a href="#work">Work</a><a class="button primary" href="https://github.com/Willsonbo">GitHub ↗</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="shell hero">
+      <div>
+        <div class="eyebrow">AI systems · Engineering</div>
+        <h1>From complexity<br>to <em>clarity.</em></h1>
+        <p class="hero-copy">我將 AI、軟體開發與工業工程結合，把複雜的營運問題轉化為可理解、可使用、可持續改善的數位產品。</p>
+        <div class="actions"><a class="button primary" href="#expertise">Explore expertise ↓</a><a class="button" href="https://github.com/Willsonbo">View GitHub ↗</a></div>
+      </div>
+      <aside class="hero-side"><div class="status"><span class="pulse"></span>Building practical intelligence</div><p>以系統思考理解現場，以軟體建立工具，以 AI 放大決策品質。</p></aside>
+    </div>
+
+    <div class="ticker" aria-hidden="true"><div class="ticker-inner"><span>AI Engineering</span><span>Full-stack Development</span><span>Industrial Engineering</span><span>Process Intelligence</span><span>Human-centered Systems</span><span>AI Engineering</span><span>Full-stack Development</span><span>Industrial Engineering</span><span>Process Intelligence</span><span>Human-centered Systems</span></div></div>
+
+    <section id="expertise" class="expertise">
+      <div class="shell">
+        <div class="section-head"><div class="kicker">01 / Expertise</div><h2>Three disciplines.<br>One engineering mindset.</h2></div>
+        <div class="cap-grid">
+          <article class="cap"><span class="cap-num">01 — AI</span><h3>Applied AI<br>&amp; intelligent tools</h3><p>設計以實際工作流程為核心的 AI 功能，從知識檢索、資訊萃取到可解釋的決策支援。</p><div class="tags"><span class="tag">LLM APPLICATIONS</span><span class="tag">RAG</span><span class="tag">PROMPT DESIGN</span><span class="tag">EVALUATION</span></div></article>
+          <article class="cap"><span class="cap-num">02 — DEV</span><h3>Product-minded<br>software development</h3><p>將模糊需求拆成清楚架構，打造兼顧使用體驗、可靠性與維護性的前端及全端產品。</p><div class="tags"><span class="tag">REACT</span><span class="tag">JAVASCRIPT</span><span class="tag">APIs</span><span class="tag">GITHUB</span></div></article>
+          <article class="cap"><span class="cap-num">03 — IE</span><h3>Industrial<br>engineering</h3><p>運用流程分析、系統最佳化與數據思維，辨識瓶頸、減少浪費並建立可衡量的改善循環。</p><div class="tags"><span class="tag">PROCESS DESIGN</span><span class="tag">OPTIMIZATION</span><span class="tag">QUALITY</span><span class="tag">OPERATIONS</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="method">
+      <div class="shell">
+        <div class="section-head"><div class="kicker">02 / Method</div><h2>Evidence before automation.</h2></div>
+        <div class="method-list">
+          <div class="method-row"><strong>Frame the system</strong><span>釐清人、流程、資料與限制條件，先定義真正值得解決的問題。</span></div>
+          <div class="method-row"><strong>Build the smallest proof</strong><span>快速建立可測試原型，以真實情境驗證價值與技術可行性。</span></div>
+          <div class="method-row"><strong>Measure and refine</strong><span>用觀測、回饋與指標持續改善，讓系統隨需求演進而保持可靠。</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="work">
+      <div class="shell">
+        <div class="section-head"><div class="kicker">03 / Selected work</div><h2>Tools that make complex work visible.</h2></div>
+        <article class="project">
+          <div class="project-visual" role="img" aria-label="Animated knowledge graph abstraction"><div class="orbit"></div><div class="visual-label">SYMPTOM → ROOT CAUSE → CHECK</div></div>
+          <div><div class="kicker">Featured project</div><h3>TraceWeave</h3><p>Fab 軟體除錯知識庫：把 log 關鍵字、異常症狀、可能根因與檢查步驟組成可互動的知識圖譜，協助工程師更快建立診斷脈絡。</p><ul><li>Problem <span>Fragmented debugging knowledge</span></li><li>Approach <span>Log triage + knowledge graph</span></li><li>Stack <span>React · Canvas · Vite</span></li></ul><a class="button primary" href="https://github.com/Willsonbo/fab-debug-knowledge-vault">Explore repository ↗</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact">
+      <div class="shell contact-box"><div><div class="kicker">04 / Connect</div><h2>Let’s build<br>better systems.</h2></div><div><p class="contact-note">對 AI 應用、軟體產品或流程改善有想法？歡迎透過 GitHub 查看作品並開始交流。</p><a class="button primary" href="https://github.com/Willsonbo">Connect on GitHub ↗</a></div></div>
+    </section>
+  </main>
+
+  <footer class="shell"><span>© <span id="year"></span> Willson. Built with systems thinking.</span><span>AI × SOFTWARE × INDUSTRIAL ENGINEERING</span></footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
-
